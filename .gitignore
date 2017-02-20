@@ -1,10 +1,13 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 .idea/
 .idea/workspace.xml
 =======
 =======
 >>>>>>> eeb5b7433cd489e75e2b169e96ed24f1d1501254
+=======
+>>>>>>> 138f1045b466f05052ce724b8560f25c52424e6b
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -95,4 +98,7 @@ ENV/
 # Rope project settings
 .ropeproject
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> 138f1045b466f05052ce724b8560f25c52424e6b
