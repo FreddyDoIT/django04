@@ -1,8 +1,7 @@
 from django.shortcuts import render
+from block.models import Block
 
 def index(request):
-    block_info=[{"name":"人间词话","descp":"好文章投过来","admin":"管理员：Freddy"},
-                {"name":"工作","descp":"公司列表","admin":"管理员：Freddy"},
-               {"name":"学校","descp":"人脉网络","admin":"管理员：Freddy"},]
+    block_info=Block.objects.all().order_by("-id")
     return render(request,"index.html",{"blocks":block_info})
 
