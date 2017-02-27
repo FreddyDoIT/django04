@@ -10,9 +10,13 @@
 </div>
 
 <div class="col-xs-12 col-md-10">
-    {% if error %}
-    <div class ="alert alert-danger">{{error}}</div>
-    {% endif %}
+    {% for field in form %}
+        {% if field.errors %}
+            {% for error in field.errors %}
+                <div class ="alert alert-danger">{{error}}</div>
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
 
     <form action="/article/create/{{b.id}}" method="POST">{% csrf_token %}
         <form class="form-horizontal">
@@ -22,7 +26,7 @@
                 </label>
 
                 <div class="col-xs-10 col-md-10">
-                    <input class="form-control" placeholder="标题" type="text" name="title" value="标题">
+                    <input class="form-control" placeholder="标题" type="text" name="title" value="{{form.title.value}}">
                     <br/><br/>
                 </div>
             </div>
@@ -32,7 +36,7 @@
                 </label>
 
                 <div class="col-xs-10 col-md-10">
-                    <textarea class="form-control" placeholder="在此输入内容……" rows="4" name="content">在此输入内容……
+                    <textarea class="form-control" placeholder="在此输入内容……" rows="4" name="content">{{form.content.value}}
                     </textarea><br/><br/>
                 </div>
             </div>
