@@ -10,6 +10,7 @@
 </div>
 
 <div class="col-xs-12 col-md-10">
+
     {% for field in form %}
         {% if field.errors %}
             {% for error in field.errors %}
@@ -30,16 +31,29 @@
                     <br/><br/>
                 </div>
             </div>
+
+            <div class="form-group">
+                <label class="col-xs-12 col-md-2">
+                    <center>作者</center>
+                </label>
+
+                <div class="col-xs-10 col-md-10">
+                    <input class="form-control" placeholder="作者" type="text" name="owner" value="{{form.owner.value}}">
+                    <br/><br/>
+                </div>
+            </div>
+
             <div class="form-group">
                 <label class="col-xs-12 col-md-2">
                     <center>内容</center>
                 </label>
 
                 <div class="col-xs-10 col-md-10">
-                    <textarea class="form-control" placeholder="在此输入内容……" rows="4" name="content">{{form.content.value}}
-                    </textarea><br/><br/>
+                    <textarea class="form-control" rows="6" name="content" placeholder="在此输入内容……">{{form.content.value}}</textarea>
+                    <br/><br/>
                 </div>
             </div>
+
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <button class="btn btn-primary">发布</button>

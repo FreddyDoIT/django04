@@ -21,23 +21,26 @@
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>状态</th>
                 <th>标题</th>
                 <th>内容</th>
                 <th>作者</th>
+                 <th>状态</th>
+                <th>创建时间</th>
                 <th>最后更新时间</th>
             </tr>
         </thead>
         <tbody>
-            {% for article in articles %}
+          {% for article_detail in articles %}
                 <tr>
-                    <td>{{article.get_status_display}}</td>
-                    <td>{{article.title}}</td>
-                    <td>{{article.content}}</td>
-                    <td>{{article.author}}</td>
-                    <td>{{article.last_update_timestamp|date:"Y-m-d P"}}</td>
+                    <td><a href="/article/detail/{{article_detail.id}}">{{article_detail.title}}</a></td>
+                    <td style="width:500px">{{article_detail.content}}</td>
+                    <td>{{article_detail.owner}}</td>
+                    <td>{{article_detail.get_status_display}}</td>
+                    <td style="width:165px">{{article_detail.create_timestamp|date:"Y-m-d P"}}</td>
+                    <td style="width:165px">{{article_detail.last_update_timestamp|date:"Y-m-d P"}}</td>
+
                 </tr>
-            {% endfor %}
+           {% endfor %}
         </tbody>
     </table>
 </div>
@@ -47,23 +50,30 @@
 
 <div class = "col-xs-12 col-xs-12">
     <nav aria-label="Page navigation">
+
     <ul class="pagination">
-        <li>
-        <a href="#" aria-label="Previous">
+
+        {% if p__page.has_previous %}
+        <li><a href="?page_no=1">首页</a></li>
+        <li><a href="?page_no={{p__page.previous_page_number}}" aria-label="Previous">
             <span aria-hidden="true">&laquo;</span>
-        </a>
-        </li>
-        <li><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-        <li>
-          <a href="#" aria-label="Next">
+        </a></li>{% endif %}
+
+        {% for current__page in p__links%}
+        {% if current__page == p__page.number%}
+        <li class="active"><a href="?page_no = {{current__page}}">{{current__page}}</a></li>
+        {% else %}
+        <li class=""><a href="?page_no={{current__page}}">{{current__page}}</a></li>
+        {% endif %}
+        {% endfor %}
+
+        {% if p__page.has_next %}
+        <li><a href="?page_no = {{p__page.next_page_number}}" aria-label="Next">
             <span aria-hidden="true">&raquo;</span>
-          </a>
-        </li>
-      </ul>
+        </a></li>
+        <li><a href="?page_no={{p__p.num_pages}}">跳至尾页</a></li>
+    </ul>{% endif %}
+
     </nav>
 </div>
 {% endblock %}
