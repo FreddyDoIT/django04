@@ -23,8 +23,8 @@
             <tr>
                 <th>标题</th>
                 <th>内容</th>
+                <th>状态</th>
                 <th>作者</th>
-                 <th>状态</th>
                 <th>创建时间</th>
                 <th>最后更新时间</th>
             </tr>
@@ -34,8 +34,8 @@
                 <tr>
                     <td><a href="/article/detail/{{article_detail.id}}">{{article_detail.title}}</a></td>
                     <td style="width:500px">{{article_detail.content}}</td>
-                    <td>{{article_detail.owner}}</td>
                     <td>{{article_detail.get_status_display}}</td>
+                    <td>{{article_detail.owner}}</td>
                     <td style="width:165px">{{article_detail.create_timestamp|date:"Y-m-d P"}}</td>
                     <td style="width:165px">{{article_detail.last_update_timestamp|date:"Y-m-d P"}}</td>
 

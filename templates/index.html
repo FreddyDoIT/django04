@@ -15,9 +15,17 @@
 </div>
 
 <div class="col-xs-12 col-md-2">
+
+
     <div class="well">
-        <span>匿名用户，请</span>
-        <a href="/register">登录</a>
+        {% if user.is_authenticated %}
+        <p>{{user.username}}</p>
+        <p>欢迎来到MTIChina</p>
+        <a href="/accounts/logout">登出</a>
+        <a href="/accounts/password_change">修改密码?</a>
+        {% else %}
+        <p>匿名用户，请<a href="/accounts/login">登录</a></p>
+        {% endif %}
     </div>
 
 </div>
