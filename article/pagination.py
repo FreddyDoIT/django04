@@ -1,6 +1,6 @@
 from django.core.paginator import Paginator
 
-def paginate_queryset(objs, page_no, cnt_per_page=2, half_show_length=5):
+def paginate_queryset(objs, page_no, cnt_per_page=5, half_show_length=5):
     p = Paginator(objs, cnt_per_page)
     if page_no > p.num_pages:
         page_no = p.num_pages

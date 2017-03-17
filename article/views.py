@@ -46,12 +46,16 @@ def article_create(request, block_id):
 
 
 def article_detail(request, article_id):
+
     article = Article.objects.get(id=article_id)
 
     all_comments = Comment.objects.filter(article=article)
 
     page_no = int(request.GET.get("page_no", "1"))
+
     comments, pagination_data = paginate_queryset(all_comments,page_no,cnt_per_page=3)
+
+
 
     return render(request, "article_detail.html", {"article_detail": article,
                                                    "pagination_data": pagination_data,
